@@ -1,60 +1,515 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wild Steel Studio</title>
+
+    <title>Wild Steel Studio | Handcrafted Metal Sculptures</title>
+
+    <meta name="description"
+          content="Wild Steel Studio creates handcrafted metal sculptures inspired by flowers, mushrooms and the natural world.">
 
     <style>
+        :root {
+            --background: #11110f;
+            --surface: #191916;
+            --text: #e8e4da;
+            --muted: #a7a397;
+            --accent: #b88952;
+            --border: #302f2a;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-            font-family: Arial, sans-serif;
+            margin: 0;
+            background: var(--background);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
             line-height: 1.6;
         }
 
-        img {
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ---------- HEADER ---------- */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 20px 5vw;
+
+            background: rgba(17, 17, 15, 0.88);
+            backdrop-filter: blur(8px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+        
+        .brand img {
+            width: 46px;
+            height: 46px;
+            object-fit: contain;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        nav a:hover {
+            color: var(--text);
+        }
+
+        /* ---------- HERO ---------- */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: flex-end;
+
+            position: relative;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(17,17,15,0.95) 0%,
+                    rgba(17,17,15,0.25) 55%,
+                    rgba(17,17,15,0.1) 100%
+                ),
+                url("images/hero.jpg")
+                center center / cover no-repeat;
+        }
+
+        .hero-content {
             width: 100%;
-            border-radius: 8px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5vw 10vh;
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            font-size: 0.75rem;
+            margin-bottom: 15px;
         }
 
         h1 {
-            margin-top: 20px;
+            max-width: 850px;
+            margin: 0;
+
+            font-size: clamp(3.5rem, 9vw, 8rem);
+            line-height: 0.9;
+            letter-spacing: -0.045em;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            max-width: 550px;
+            margin-top: 28px;
+
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--muted);
+        }
+
+        /* ---------- GENERAL ---------- */
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 5vw;
+        }
+
+        .section-label {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-size: 0.7rem;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin: 0 0 35px;
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1;
+            letter-spacing: -0.03em;
+        }
+
+        /* ---------- INTRO ---------- */
+
+        .intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            color: var(--muted);
+            max-width: 600px;
+        }
+
+        .intro-text p {
+            margin-top: 0;
+        }
+
+        /* ---------- GALLERY ---------- */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            background: var(--surface);
+        }
+
+        .gallery-item img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            object-fit: cover;
+
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.03);
+        }
+
+        .gallery-item.large {
+            grid-column: span 2;
+        }
+
+        /* ---------- VIDEO ---------- */
+
+        .video-section {
+            background: var(--surface);
+            max-width: none;
+        }
+
+        .video-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .video-placeholder {
+            aspect-ratio: 16 / 9;
+            background: #0b0b0a;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: var(--muted);
+            border: 1px solid var(--border);
+        }
+
+        /* ---------- CONTACT ---------- */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            color: var(--muted);
+            max-width: 550px;
+            margin: 0 auto 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 25px;
+
+            border: 1px solid var(--accent);
+            color: var(--accent);
+
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.75rem;
+
+            transition: 0.2s ease;
+        }
+
+        .button:hover {
+            background: var(--accent);
+            color: var(--background);
+        }
+
+        /* ---------- FOOTER ---------- */
+
+        footer {
+            padding: 30px 5vw;
+            border-top: 1px solid var(--border);
+
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+
+            color: var(--muted);
+            font-size: 0.75rem;
+        }
+
+        /* ---------- MOBILE ---------- */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 16px 5vw;
+            }
+
+            nav {
+                gap: 15px;
+            }
+
+            nav a:nth-child(2) {
+                display: none;
+            }
+
+            .hero {
+                min-height: 85vh;
+            }
+
+            section {
+                padding-top: 80px;
+                padding-bottom: 80px;
+            }
+
+            .intro {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item.large {
+                grid-column: span 1;
+            }
+
+            footer {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <h1>Wild Steel Studio</h1>
+<header> 
+    <a href="#" class="brand"> 
+        <img src="images/logo.png" alt="Wild Steel Studio"> 
+        <span>Wild Steel Studio</span> 
+    </a> 
+    <nav> 
+        <a href="#work">Work</a> 
+        <a href="#studio">Studio</a> 
+        <a href="#video">YouTube</a> 
+        <a href="#contact">Contact</a> 
+    </nav> 
+</header>
 
-    <p>
-        Handcrafted metal sculptures inspired by flowers, mushrooms,
-        and the natural world.
-    </p>
 
-    <h2>Gallery</h2>
+<main>
 
-    <img src="hero.jpg" alt="Metal sculpture">
+    <!-- HERO -->
 
-    <h2>About</h2>
+    <section class="hero">
 
-    <p>
-        Wild Steel Studio documents the creation of handcrafted metal
-        sculptures from raw metal to finished artwork.
-    </p>
+        <div class="hero-content">
 
-    <h2>YouTube</h2>
+            <div class="eyebrow">
+                Handcrafted metal sculpture
+            </div>
 
-    <p>
-        <a href="https://youtube.com/channel/UCpO9B2trbu9Ddkvog1aXZqA">Visit the channel</a>
-    </p>
+            <h1>
+                Wild Steel<br>
+                Studio
+            </h1>
 
-    <h2>Contact</h2>
+            <div class="hero-subtitle">
+                Turning cold steel into something alive.
+            </div>
 
-    <p>
-        contact@wildsteelstudio.com
-    </p>
+        </div>
+
+    </section>
+
+
+    <!-- STUDIO INTRO -->
+
+    <section id="studio">
+
+        <div class="intro">
+
+            <div>
+                <div class="section-label">
+                    The studio
+                </div>
+
+                <h2>
+                    Steel meets nature.
+                </h2>
+            </div>
+
+            <div class="intro-text">
+
+                <p>
+                    Wild Steel Studio creates handcrafted metal sculptures
+                    inspired by flowers, mushrooms and the natural world.
+                </p>
+
+                <p>
+                    Each piece is made from raw metal, shaped and assembled
+                    by hand in the workshop.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- GALLERY -->
+
+    <section id="work">
+
+        <div class="section-label">
+            Selected work
+        </div>
+
+        <h2>
+            From metal<br>
+            to nature.
+        </h2>
+
+        <div class="gallery">
+
+            <!-- Replace these filenames with your photographs -->
+
+            <div class="gallery-item large">
+                <img src="images/sculpture-01.jpg"
+                     alt="Wild Steel Studio metal sculpture">
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/sculpture-02.jpg"
+                     alt="Handcrafted metal sculpture">
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/sculpture-03.jpg"
+                     alt="Handcrafted metal sculpture">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- YOUTUBE -->
+
+    <section id="video" class="video-section">
+
+        <div class="video-inner">
+
+            <div class="section-label">
+                From the workshop
+            </div>
+
+            <h2>
+                Watch it being made.
+            </h2>
+
+            <div class="video-placeholder">
+                Your YouTube video will go here.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="contact">
+
+        <div class="section-label">
+            Get in touch
+        </div>
+
+        <h2>
+            Have an idea?
+        </h2>
+
+        <p>
+            For commissions, collaborations or just to say hello,
+            get in touch.
+        </p>
+
+        <!-- Replace this with your Proton address -->
+
+        <a class="button"
+           href="mailto:wildsteelstudio@proton.me">
+            Contact the studio
+        </a>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div>
+        © 2026 Wild Steel Studio
+    </div>
+
+    <div>
+        Handcrafted in Europe
+    </div>
+
+</footer>
 
 </body>
 </html>
+```
