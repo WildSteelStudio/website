@@ -8,7 +8,7 @@
     <title>Wild Steel Studio | Handcrafted Metal Sculptures</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <meta name="description"
-          content="Wild Steel Studio creates handcrafted metal sculptures inspired by flowers, mushrooms and the natural world.">
+          content="Wild Steel Studio creates handcrafted metal sculptures inspired by the natural world.">
 
     <style>
         :root {
@@ -312,6 +312,22 @@
                 gap: 8px;
             }
         }
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .contact-email {
+            color: var(--muted);
+            font-size: 0.85rem;
+            letter-spacing: 0.04em;
+        }
+        
+        .contact-email:hover {
+            color: var(--text);
+        }
         
 
         /* ---------- MOBILE ---------- */
@@ -437,7 +453,7 @@
 
                 <p>
                     Wild Steel Studio creates handcrafted metal sculptures
-                    inspired by flowers, mushrooms and the natural world.
+                    inspired by the natural world.
                 </p>
 
                 <p>
@@ -531,10 +547,17 @@
 
         <!-- Replace this with your Proton address -->
 
-        <a class="button"
-           href="mailto:wildsteelstudio@proton.me">
-            Contact the studio
-        </a>
+        <div class="contact-methods">
+            
+            <a class="button" 
+                href="mailto:wildsteelstudio@proton.me?subject=Wild%20Steel%20Studio%20Enquiry"> 
+                Contact the studio 
+            </a> 
+            <a class="contact-email">
+                href="mailto:wildsteelstudio@proton.me">
+                wildsteelstudio@proton.me 
+            </a> 
+        </div>
 
     </section>
 
