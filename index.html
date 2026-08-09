@@ -275,17 +275,44 @@
 
         /* ---------- FOOTER ---------- */
 
-        footer {
-            padding: 30px 5vw;
+                footer {
+            padding: 18px 5vw;
             border-top: 1px solid var(--border);
-
+        
             display: flex;
             justify-content: space-between;
+            align-items: center;
             gap: 20px;
-
+        
             color: var(--muted);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
         }
+        
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.65rem;
+        }
+        
+        .footer-brand img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            display: block;
+        }
+
+        @media (max-width: 700px) {
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+        }
+        
 
         /* ---------- MOBILE ---------- */
 
@@ -520,7 +547,6 @@
         <span>Wild Steel Studio</span> 
     </div> 
     <div> © 2026 Wild Steel Studio </div> 
-    <div> Handcrafted in Europe </div> 
 </footer>
 
 </body>
