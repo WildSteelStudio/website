@@ -534,28 +534,38 @@
         <div class="gallery">
 
             <div class="gallery-item large">
-                <img src="images/sculpture-01.jpg"
-                     alt="Wild Steel Studio metal sculpture">
+                <img src="images/web/sculpture-01-preview.webp"
+                 data-full="images/web/sculpture-01-large.webp"
+                 loading="lazy"
+                 alt="Wild Steel Studio handcrafted metal sculpture">
             </div>
 
             <div class="gallery-item">
-                <img src="images/sculpture-02.jpg"
-                     alt="Handcrafted metal sculpture">
+                <img src="images/web/sculpture-02-preview.webp"
+                 data-full="images/web/sculpture-02-large.webp"
+                 loading="lazy"
+                 alt="Wild Steel Studio handcrafted metal sculpture">
             </div>
 
             <div class="gallery-item">
-                <img src="images/sculpture-03.jpg"
-                     alt="Handcrafted metal sculpture">
+                <img src="images/web/sculpture-03-preview.webp"
+                 data-full="images/web/sculpture-03-large.webp"
+                 loading="lazy"
+                 alt="Wild Steel Studio handcrafted metal sculpture">
             </div>
             
             <div class="gallery-item">
-                <img src="images/sculpture-04.jpg"
-                     alt="Handcrafted metal sculpture">
+                <img src="images/web/sculpture-04-preview.webp"
+                 data-full="images/web/sculpture-04-large.webp"
+                 loading="lazy"
+                 alt="Wild Steel Studio handcrafted metal sculpture">
             </div>
             
             <div class="gallery-item">
-                <img src="images/sculpture-05.jpg"
-                     alt="Handcrafted metal sculpture">
+                <img src="images/web/sculpture-05-preview.webp"
+                 data-full="images/web/sculpture-05-large.webp"
+                 loading="lazy"
+                 alt="Wild Steel Studio handcrafted metal sculpture">
             </div>
 
         </div>
@@ -665,7 +675,7 @@
     // Open lightbox
     document.querySelectorAll('.gallery-item img').forEach(img => {
         img.addEventListener('click', () => {
-            lightboxImg.src = img.src;
+            lightboxImg.src = img.dataset.full;
             lightbox.style.display = 'flex';
             resetZoom();
         });
