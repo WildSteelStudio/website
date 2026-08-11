@@ -399,6 +399,22 @@
                 object-fit: contain;
                 display: block;
             }
+            .lightbox {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0,0,0,0.9);
+                z-index: 9999;
+                cursor: pointer;
+            
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .lightbox img {
+                max-width: 95%;
+                max-height: 95%;
+            }
         }
     </style>
 </head>
@@ -602,6 +618,24 @@
     </div> 
     <div> © 2026 Wild Steel Studio </div> 
 </footer>
+<div id="lightbox" class="lightbox">
+    <img id="lightbox-img" src="" alt="">
+</div>
+<script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+        img.addEventListener('click', () => {
+            lightbox.style.display = 'flex';
+            lightboxImg.src = img.src;
+        });
+    });
+    
+    lightbox.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+    });
+</script>
 
 </body>
 </html>
