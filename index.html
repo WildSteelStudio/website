@@ -343,22 +343,35 @@
             border: 0;
         }
         /* ---------- LIGHTBOX ---------- */
-        .lightbox {
-                display: none;
-                position: fixed;
-                inset: 0;
-                background: rgba(0,0,0,0.9);
-                z-index: 9999;
-                cursor: pointer;
-            
-                justify-content: center;
-                align-items: center;
-            }
-            
-            .lightbox img {
-                max-width: 95%;
-                max-height: 95%;
-            }
+        #lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+        
+            background: rgba(0, 0, 0, 0.92);
+        
+            z-index: 99999;
+        
+            justify-content: center;
+            align-items: center;
+        
+            padding: 20px;
+        }
+        
+        #lightbox img {
+            display: block;
+        
+            width: auto;
+            height: auto;
+        
+            max-width: 90vw;
+            max-height: 90vh;
+        
+            object-fit: contain;
+        }
         /* ---------- MOBILE ---------- */
 
         @media (max-width: 700px) {
@@ -622,14 +635,14 @@
 <script>
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
-    
+
     document.querySelectorAll('.gallery-item img').forEach(img => {
         img.addEventListener('click', () => {
-            lightbox.style.display = 'flex';
             lightboxImg.src = img.src;
+            lightbox.style.display = 'flex';
         });
     });
-    
+
     lightbox.addEventListener('click', () => {
         lightbox.style.display = 'none';
     });
