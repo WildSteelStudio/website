@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +6,7 @@
 
     <title>Wild Steel Studio | Handcrafted Metal Sculptures</title>
     <link rel="icon" type="image/png" href="/images/favicon_mini.png">
+
     <meta name="description"
           content="Wild Steel Studio creates handcrafted metal sculptures inspired by the natural world.">
 
@@ -66,13 +66,13 @@
             display: flex;
             align-items: center;
             gap: 12px;
-        
+
             font-size: 0.9rem;
             font-weight: bold;
             letter-spacing: 0.14em;
             text-transform: uppercase;
         }
-        
+
         .brand img {
             width: 46px;
             height: 46px;
@@ -188,58 +188,67 @@
         }
 
         /* ---------- GALLERY ---------- */
-        
-        .gallery { 
+
+        .gallery {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 18px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px 18px;
         }
+
         .gallery-item {
-            overflow: hidden;
             background: var(--surface);
         }
-        
-        .gallery-item img {
+
+        /* Image area */
+        .gallery-image {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .gallery-image img {
             display: block;
             width: 100%;
-            height: 90%;
-            min-height: 300px;
+            height: 100%;
             object-fit: cover;
-        
+
             transition: transform 0.5s ease;
         }
-        
-        .gallery-item.large img {
-            display: block;
-            width: 100%;
-            height: 90%;
-            min-height: 300px;
-            object-fit: cover;
-        
-            transition: transform 0.5s ease;
+
+        /* Large first image */
+        .gallery-item.large {
+            grid-column: span 2;
         }
-        
+
+        .gallery-item.large .gallery-image {
+            height: 500px;
+        }
+
+        /* Hover zoom */
+        .gallery-image:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Captions */
         .gallery-caption {
             padding: 14px 2px 20px;
+
             display: flex;
             flex-direction: column;
             gap: 3px;
         }
-        
+
         .gallery-caption strong {
             color: var(--text);
             font-size: 0.9rem;
             font-weight: normal;
             letter-spacing: 0.04em;
         }
-        
+
         .gallery-caption span {
             color: var(--muted);
             font-size: 0.75rem;
             line-height: 1.4;
-        }
-        .gallery-item:hover img {
-            transform: scale(1.03);
         }
 
         /* ---------- VIDEO ---------- */
@@ -266,6 +275,20 @@
             border: 1px solid var(--border);
         }
 
+        .video-embed {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .video-embed iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
         /* ---------- CONTACT ---------- */
 
         .contact {
@@ -276,6 +299,23 @@
             color: var(--muted);
             max-width: 550px;
             margin: 0 auto 30px;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .contact-email {
+            color: var(--muted);
+            font-size: 0.85rem;
+            letter-spacing: 0.04em;
+        }
+
+        .contact-email:hover {
+            color: var(--text);
         }
 
         .button {
@@ -299,29 +339,29 @@
 
         /* ---------- FOOTER ---------- */
 
-                footer {
+        footer {
             padding: 18px 5vw;
             border-top: 1px solid var(--border);
-        
+
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 20px;
-        
+
             color: var(--muted);
             font-size: 0.7rem;
         }
-        
+
         .footer-brand {
             display: flex;
             align-items: center;
             gap: 8px;
-        
+
             text-transform: uppercase;
             letter-spacing: 0.1em;
             font-size: 0.65rem;
         }
-        
+
         .footer-brand img {
             width: 24px;
             height: 24px;
@@ -329,44 +369,8 @@
             display: block;
         }
 
-        @media (max-width: 700px) {
-            footer {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
-        }
-        .contact-methods {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 14px;
-        }
-        
-        .contact-email {
-            color: var(--muted);
-            font-size: 0.85rem;
-            letter-spacing: 0.04em;
-        }
-        
-        .contact-email:hover {
-            color: var(--text);
-        }
-        
-        .video-embed {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            border: 1px solid var(--border);
-            overflow: hidden;
-        }
-        
-        .video-embed iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
         /* ---------- LIGHTBOX ---------- */
+
         #lightbox {
             display: none;
             position: fixed;
@@ -374,36 +378,37 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-        
+
             background: rgba(0, 0, 0, 0.92);
-        
+
             z-index: 99999;
-        
+
             justify-content: center;
             align-items: center;
-        
+
             padding: 20px;
-        
+
             overflow: hidden;
         }
-        
+
         #lightbox img {
             display: block;
-        
+
             width: auto;
             height: auto;
-        
+
             max-width: 90vw;
             max-height: 90vh;
-        
+
             object-fit: contain;
-        
+
             cursor: zoom-in;
-        
+
             transition: transform 0.15s ease;
             user-select: none;
             -webkit-user-drag: none;
         }
+
         /* ---------- MOBILE ---------- */
 
         @media (max-width: 700px) {
@@ -436,54 +441,59 @@
 
             .gallery {
                 grid-template-columns: 1fr;
-            }
-            .gallery-item img {
-                height: 300px;
+                gap: 28px;
             }
 
             .gallery-item.large {
                 grid-column: span 1;
             }
 
+            .gallery-image,
+            .gallery-item.large .gallery-image {
+                height: 300px;
+            }
+
             footer {
                 flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
             }
+
             .footer-brand {
                 display: flex;
                 align-items: center;
                 gap: 10px;
-            
+
                 text-transform: uppercase;
                 letter-spacing: 0.12em;
                 font-size: 0.7rem;
             }
-            
+
             .footer-brand img {
                 width: 30px;
                 height: 30px;
                 object-fit: contain;
                 display: block;
             }
-            
         }
     </style>
 </head>
 
 <body>
 
-<header> 
-    <a href="#" class="brand"> 
-        <img src="images/logo.png" alt="Wild Steel Studio"> 
-        <span>Wild Steel Studio</span> 
-    </a> 
-    <nav> 
-        <a href="#work">Work</a> 
-        <a href="#studio">Studio</a> 
-        <a href="#video">YouTube</a> 
-        <a href="#contact">Contact</a> 
-    </nav> 
-</header>
+<header>
+    <a href="#" class="brand">
+        <img src="images/logo.png" alt="Wild Steel Studio">
+        <span>Wild Steel Studio</span>
+    </a>
 
+    <nav>
+        <a href="#work">Work</a>
+        <a href="#studio">Studio</a>
+        <a href="#video">YouTube</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
 <main>
 
@@ -560,89 +570,143 @@
 
         <div class="gallery">
 
+            <!-- SCULPTURE 01 -->
+
             <div class="gallery-item large">
-                <img src="images/web/sculpture-01-preview.webp"
-                 data-full="images/web/sculpture-01-large.webp"
-                 loading="lazy"
-                 alt="Handcrafted steel flower sculpture with eight elongated petals">
+
+                <div class="gallery-image">
+                    <img src="images/web/sculpture-01-preview.webp"
+                         data-full="images/web/sculpture-01-large.webp"
+                         loading="lazy"
+                         alt="Handcrafted steel flower sculpture with eight elongated petals">
+                </div>
+
                 <div class="gallery-caption">
                     <strong>Steel Flower I</strong>
                     <span>Hand-shaped sheet steel · approx. 25 cm diameter</span>
                     <span>Indicative price: €100</span>
                 </div>
+
             </div>
 
+
+            <!-- SCULPTURE 02 -->
+
             <div class="gallery-item">
-                <img src="images/web/sculpture-02-preview.webp"
-                 data-full="images/web/sculpture-02-large.webp"
-                 loading="lazy"
-                 alt="Handcrafted steel flower sculpture with twelve pointed petals">
+
+                <div class="gallery-image">
+                    <img src="images/web/sculpture-02-preview.webp"
+                         data-full="images/web/sculpture-02-large.webp"
+                         loading="lazy"
+                         alt="Handcrafted steel flower sculpture with twelve pointed petals">
+                </div>
+
                 <div class="gallery-caption">
                     <strong>Steel Flower II</strong>
                     <span>Hand-shaped sheet steel · approx. 12 cm diameter</span>
                     <span>Indicative price: €60–70</span>
                 </div>
+
             </div>
 
+
+            <!-- SCULPTURE 03 -->
+
             <div class="gallery-item">
-                <img src="images/web/sculpture-03-preview.webp"
-                 data-full="images/web/sculpture-03-large.webp"
-                 loading="lazy"
-                 alt="Pair of handcrafted steel mushroom garden sculptures">
+
+                <div class="gallery-image">
+                    <img src="images/web/sculpture-03-preview.webp"
+                         data-full="images/web/sculpture-03-large.webp"
+                         loading="lazy"
+                         alt="Pair of handcrafted steel mushroom garden sculptures">
+                </div>
+
                 <div class="gallery-caption">
                     <strong>Steel Mushrooms</strong>
                     <span>Hand-shaped sheet steel · two-piece arrangement</span>
                     <span>Indicative price: €85 for the pair</span>
                 </div>
+
             </div>
-            
+
+
+            <!-- SCULPTURE 04 -->
+
             <div class="gallery-item">
-                <img src="images/web/sculpture-04-preview.webp"
-                 data-full="images/web/sculpture-04-large.webp"
-                 loading="lazy"
-                 alt="Complex handcrafted steel arrangement of mushrooms and flowers">
+
+                <div class="gallery-image">
+                    <img src="images/web/sculpture-04-preview.webp"
+                         data-full="images/web/sculpture-04-large.webp"
+                         loading="lazy"
+                         alt="Complex handcrafted steel arrangement of mushrooms and flowers">
+                </div>
+
                 <div class="gallery-caption">
                     <strong>Wild Garden</strong>
                     <span>Three mushrooms and five handmade steel flowers</span>
                     <span>Indicative price: from €300</span>
                 </div>
+
             </div>
-            
+
+
+            <!-- SCULPTURE 05 -->
+
             <div class="gallery-item">
-                <img src="images/web/sculpture-05-preview.webp"
-                 data-full="images/web/sculpture-05-large.webp"
-                 loading="lazy"
-                 alt="Experimental handcrafted steel flower sculpture with unusual petals">
+
+                <div class="gallery-image">
+                    <img src="images/web/sculpture-05-preview.webp"
+                         data-full="images/web/sculpture-05-large.webp"
+                         loading="lazy"
+                         alt="Experimental handcrafted steel flower sculpture with unusual petals">
+                </div>
+
                 <div class="gallery-caption">
                     <strong>Alien Flower</strong>
                     <span>Experimental hand-shaped steel · approx. 15 cm diameter</span>
                     <span>Indicative price: approx. €70</span>
                 </div>
+
             </div>
 
+
+            <!-- SCULPTURE 06 -->
+
             <div class="gallery-item">
-                <img src="images/web/sculpture-06-preview.webp"
-                 data-full="images/web/sculpture-06-large.webp"
-                 loading="lazy"
-                 alt="Handcrafted steel flower sculpture with twelve pointed petals">
+
+                <div class="gallery-image">
+                    <img src="images/web/sculpture-06-preview.webp"
+                         data-full="images/web/sculpture-06-large.webp"
+                         loading="lazy"
+                         alt="Handcrafted steel flower sculpture with twelve pointed petals">
+                </div>
+
                 <div class="gallery-caption">
                     <strong>Steel Flower II</strong>
                     <span>Hand-shaped sheet steel · approx. 12 cm diameter</span>
                     <span>Indicative price: €60–70</span>
                 </div>
+
             </div>
 
+
+            <!-- SCULPTURE 07 -->
+
             <div class="gallery-item">
-                <img src="images/web/sculpture-07-preview.webp"
-                 data-full="images/web/sculpture-07-large.webp"
-                 loading="lazy"
-                 alt="Handcrafted steel sculpture recreating the Wild Steel Studio logo">
+
+                <div class="gallery-image">
+                    <img src="images/web/sculpture-07-preview.webp"
+                         data-full="images/web/sculpture-07-large.webp"
+                         loading="lazy"
+                         alt="Handcrafted steel sculpture recreating the Wild Steel Studio logo">
+                </div>
+
                 <div class="gallery-caption">
                     <strong>Wild Steel Studio</strong>
                     <span>Custom logo sculpture · individually fabricated</span>
                     <span>Not for sale · similar commissions from €300</span>
                 </div>
-                
+
             </div>
 
         </div>
@@ -665,19 +729,25 @@
             </h2>
 
             <div class="video-embed">
+
                 <iframe
-                    src="https://www.youtube.com/embed/oirCF7kEqhE?si=ellOS7jUx5PlWypM" 
+                    src="https://www.youtube.com/embed/oirCF7kEqhE?si=ellOS7jUx5PlWypM"
                     title="Wild Steel Studio"
                     allowfullscreen>
                 </iframe>
+
             </div>
+
             <p style="margin-top:20px;">
+
                 <a class="button"
                    href="https://www.youtube.com/@WildSteelStudio"
                    target="_blank">
                     Visit YouTube Channel
                 </a>
+
             </p>
+
         </div>
 
     </section>
@@ -701,15 +771,17 @@
         </p>
 
         <div class="contact-methods">
-            
-            <a class="button" 
-                href="mailto:wildsteelstudio@proton.me?subject=Wild%20Steel%20Studio%20Enquiry"> 
-                Contact the studio 
-            </a> 
+
+            <a class="button"
+               href="mailto:wildsteelstudio@proton.me?subject=Wild%20Steel%20Studio%20Enquiry">
+                Contact the studio
+            </a>
+
             <a class="contact-email"
-                href="mailto:wildsteelstudio@proton.me">
-                wildsteelstudio@proton.me 
-            </a> 
+               href="mailto:wildsteelstudio@proton.me">
+                wildsteelstudio@proton.me
+            </a>
+
         </div>
 
     </section>
@@ -717,17 +789,39 @@
 </main>
 
 
-<footer> 
-    <div class="footer-brand"> 
-        <img src="images/logo.png" alt="Wild Steel Studio"> 
-        <span>Wild Steel Studio</span> 
-    </div> 
-    <div> © 2026 Wild Steel Studio </div> 
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-brand">
+
+        <img src="images/logo.png"
+             alt="Wild Steel Studio">
+
+        <span>Wild Steel Studio</span>
+
+    </div>
+
+    <div>
+        © 2026 Wild Steel Studio
+    </div>
+
 </footer>
+
+
+<!-- LIGHTBOX -->
+
 <div id="lightbox" class="lightbox">
-    <img id="lightbox-img" src="" alt="">
+
+    <img id="lightbox-img"
+         src=""
+         alt="">
+
 </div>
+
+
 <script>
+
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
 
@@ -735,53 +829,88 @@
     let posX = 0;
     let posY = 0;
 
+
     function updateImage() {
+
         lightboxImg.style.transform =
             `translate(${posX}px, ${posY}px) scale(${scale})`;
+
     }
 
+
     function resetZoom() {
+
         scale = 1;
         posX = 0;
         posY = 0;
 
         lightboxImg.style.transform = 'none';
         lightboxImg.style.cursor = 'zoom-in';
+
     }
 
-    // Open lightbox
-    document.querySelectorAll('.gallery-item img').forEach(img => {
+
+    /* ---------- OPEN LIGHTBOX ---------- */
+
+    document.querySelectorAll('.gallery-image img').forEach(img => {
+
         img.addEventListener('click', () => {
+
             lightboxImg.src = img.dataset.full;
+
             lightbox.style.display = 'flex';
+
             resetZoom();
+
         });
+
     });
 
-    // Close when clicking the dark background
+
+    /* ---------- CLOSE LIGHTBOX ---------- */
+
     lightbox.addEventListener('click', (e) => {
+
         if (e.target === lightbox) {
+
             lightbox.style.display = 'none';
+
             resetZoom();
+
         }
+
     });
 
-    // Close with Escape
+
+    /* ---------- ESCAPE KEY ---------- */
+
     document.addEventListener('keydown', (e) => {
+
         if (e.key === 'Escape') {
+
             lightbox.style.display = 'none';
+
             resetZoom();
+
         }
+
     });
 
-    // Zoom with mouse wheel
+
+    /* ---------- ZOOM WITH MOUSE WHEEL ---------- */
+
     lightboxImg.addEventListener('wheel', (e) => {
+
         e.preventDefault();
 
         if (e.deltaY < 0) {
+
             scale += 0.25;
+
         } else {
+
             scale -= 0.25;
+
         }
 
         scale = Math.max(1, Math.min(scale, 5));
@@ -790,23 +919,30 @@
             scale > 1 ? 'grab' : 'zoom-in';
 
         updateImage();
+
     }, { passive: false });
 
 
-    // Double-click to reset zoom
+    /* ---------- DOUBLE CLICK RESET ---------- */
+
     lightboxImg.addEventListener('dblclick', () => {
+
         resetZoom();
+
     });
 
 
-    // Drag image when zoomed
+    /* ---------- DRAG WHEN ZOOMED ---------- */
+
     let dragging = false;
     let startX;
     let startY;
     let startPosX;
     let startPosY;
 
+
     lightboxImg.addEventListener('mousedown', (e) => {
+
         if (scale <= 1) return;
 
         dragging = true;
@@ -820,27 +956,34 @@
         lightboxImg.style.cursor = 'grabbing';
 
         e.preventDefault();
+
     });
 
+
     document.addEventListener('mousemove', (e) => {
+
         if (!dragging) return;
 
         posX = startPosX + (e.clientX - startX);
         posY = startPosY + (e.clientY - startY);
 
         updateImage();
+
     });
 
+
     document.addEventListener('mouseup', () => {
+
         if (!dragging) return;
 
         dragging = false;
 
         lightboxImg.style.cursor =
             scale > 1 ? 'grab' : 'zoom-in';
+
     });
+
 </script>
 
 </body>
 </html>
-```
