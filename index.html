@@ -210,9 +210,13 @@
         }
         
         .gallery-item.large img {
-            height: 500px;
-            grid-column: span 2;
-            object-position: center 30%;
+            display: block;
+            width: 100%;
+            height: 90%;
+            min-height: 300px;
+            object-fit: cover;
+        
+            transition: transform 0.5s ease;
         }
         
         .gallery-caption {
