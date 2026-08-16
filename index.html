@@ -188,7 +188,12 @@
         }
 
         /* ---------- GALLERY ---------- */
-
+        
+        .gallery { 
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 18px;
+        }
         .gallery-item {
             overflow: hidden;
             background: var(--surface);
@@ -206,7 +211,8 @@
         
         .gallery-item.large img {
             height: 500px;
-            object-position: center center;
+            grid-column: span 2;
+            object-position: center 30%;
         }
         
         .gallery-caption {
@@ -227,6 +233,9 @@
             color: var(--muted);
             font-size: 0.75rem;
             line-height: 1.4;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.03);
         }
 
         /* ---------- VIDEO ---------- */
